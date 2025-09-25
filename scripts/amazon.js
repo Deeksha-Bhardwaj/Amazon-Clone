@@ -1,9 +1,8 @@
-import { cart , addtocart } from '../data/cart.js';
-import { products } from '../data/products.js';
-
-
+import { cart, addtocart } from "../data/cart.js";
+import { products } from "../data/products.js";
 
 let producthtml = ``;
+//loop to generate the html for products
 products.forEach((product) => {
   producthtml += `
    <div class="product-container">
@@ -59,22 +58,19 @@ products.forEach((product) => {
    `;
 });
 
-
-
-// function to increase the cart quantity number 
-function updatecartquantity(){
-let cartquantity = 0;
-    cart.forEach((item) => {
-      cartquantity += item.quantity;
-    });
-    document.querySelector(`.js-cart-quantity`).innerHTML = cartquantity;
+// function to increase the cart quantity number
+function updatecartquantity() {
+  let cartquantity = 0;
+  cart.forEach((cartitem) => {
+    cartquantity += cartitem.quantity;
+  });
+  document.querySelector(`.js-cart-quantity`).innerHTML = cartquantity;
 }
 
-
-//displaying order on the webpage 
+//displaying order on the webpage
 document.querySelector(`.js-products-grid`).innerHTML = producthtml;
 
-//add item to cart and increase quantity when button is clicked 
+//add item to cart and increase quantity when button is clicked
 document.querySelectorAll(`.js-add-to-cart`).forEach((button) => {
   button.addEventListener(`click`, () => {
     const productId = button.dataset.productId;
